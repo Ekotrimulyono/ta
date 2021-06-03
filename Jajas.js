@@ -141,25 +141,6 @@ function trimIt(x) {
   return x.replace(/^\s+|\s+$/gm, "");
 }
 
-// Focus and blur
-my_text.addEventListener(
-  "focus",
-  function() {
-    my_text.style.background = "rgba(144, 60, 94, 0.9)";
-    aesthetic_text.style.background = "rgba(144, 60, 94, 0.9)";
-  },
-  false
-);
-
-my_text.addEventListener(
-  "blur",
-  function() {
-    my_text.style.background = "rgba(144, 60, 94, 0.75)";
-    aesthetic_text.style.background = "rgba(144, 60, 94, 0.75)";
-  },
-  false
-);
-
 // Trigger on paste
 my_text.addEventListener(
   "paste",
@@ -169,15 +150,3 @@ my_text.addEventListener(
   false
 );
 
-// Copy to clipboard
-var clipboard = new Clipboard("#aesthetic_text");
-clipboard.on("success", function(e) {
-  document.querySelector(".tooltip").classList.add("copied");
-  aesthetic_text.style.pointerEvents = "none";
-
-  setTimeout(function() {
-    document.querySelector(".tooltip").classList.remove("copied");
-    e.clearSelection();
-    aesthetic_text.style.pointerEvents = "auto";
-  }, 1500);
-});
